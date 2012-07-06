@@ -2,7 +2,9 @@
 <html>
     <head>
         <title>eWriter for Bootstrap</title>
+		<meta http-equiv="Content-Type" content="text/html;UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE-EmulateIE8"/>
+
         <!--[if lt IE 9]>
         <script src="/javascript/html5.js"></script>
         <![endif]-->
@@ -10,7 +12,6 @@
             body {
                 padding-top: 60px;
             }
-
         </style>
 
         <script type="text/javascript" src="javascript/json2.js"></script>
@@ -20,14 +21,15 @@
         <script type="text/javascript" src="javascript/backbone-min.js"></script>
         <script type="text/javascript" src="javascript/require.js"></script>
         <script type="text/javascript" src="bootstrap/2.0/js/bootstrap.min.js"></script>
-        <link id="themes" rel="stylesheet" href="bootstrap/2.0/css/bootstrap.min.css"/>        
+
+        <link rel="stylesheet" href="bootstrap/2.0/css/bootstrap.min.css"/>        		
+        <link rel="stylesheet" href="javascript/redactor/css/redactor.css"/>
+        <link rel="stylesheet" href="google-code-prettify/src/prettify.css"/>        			
+		
         <script type="text/javascript" src="javascript/markdown.js"></script>
         <script type="text/javascript" src="javascript/jquery-ui-1.8.20.custom.min.js"></script>
         <script type="text/javascript" src="javascript/js-beautify/beautify-html.js"></script>
-        <script type="text/javascript" src="javascript/redactor/langs/ko.js"></script>
-        <script type="text/javascript" src="javascript/redactor/redactor.js"></script>
-        <link rel="stylesheet" href="javascript/redactor/css/redactor.css"/>
-        <link rel="stylesheet" href="google-code-prettify/src/prettify.css"/>        
+        <script type="text/javascript" src="javascript/redactor/redactor.min.js"></script>
         <script type="text/javascript" src="google-code-prettify/src/prettify.js"></script>
         <script type="text/javascript">
             require.config({
