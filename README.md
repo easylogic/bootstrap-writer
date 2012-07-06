@@ -1,4 +1,4 @@
 bootstrap-writer
 ================
 
-Easy Editor for Bootstrap
+Easy Writer for Bootstrap
