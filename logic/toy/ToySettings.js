@@ -3,71 +3,7 @@ define([
 ],function(tpl){
     return Backbone.View.extend({
         className : 'modal hide fade in',
-        styleList: {
-            "class" : "",
-            "height" : "",
-            "width" : "",
-            "position": "",
-            "left" : "",
-            "right" : "",
-            "top" : "",
-            "bottom" : "",
-            "color": "",   
-            "font-weight": "",
-            "font-style": "",
-            "font-size" : "",
-            "font-family" : "",
-            "line-height" : "",
-            "text-shadow" : "",
-            "text-align" : "",
-            'text-decoration' : '',
-            'text-transform' : '',
-            'text-indent' : '',
-            "background-color": '',
-            "background-image": "",
-            "background-repeat": "",
-            "background-attachment": "",
-            "background-position": "",
-            "background-clip": "",
-            "background-origin": "",
-            "background-size": "",
-            "border-color" : "",
-            "border-width" : "",
-            "border-style" : "",
-            "border-radius" : "",
-            "border-image" : "",
-            "box-shadow" : "",
-            "margin": "",
-            "padding": "",
-            "transform-translate" : "",
-            "transform-rotate" : "",
-            "transform-scale" : "",
-            "transform-skew" : "",
-            "transform-matrix" : "",
-            "transform-translate3d" : "",
-            "transform-rotate3d" : "",
-            "transform-scale3d" : "",
-            "transform-matrix3d" : ""            
-        },      
- 
-        
-        styleValueList: { 
-            'position' : ['static', 'relative', 'absolute', 'fixed'],
-            'color' : 'color',
-            'font-style': ['normal', 'italic', 'oblique'],
-            'text-align': ['left', "right", 'justify', 'center'],
-            'text-decoration': ['none', 'overline', 'line-through', "underline", "blink"],
-            'text-transform': ['none', 'capitalize', 'uppercase', 'lowercase'],
-            'background-color' : 'color',
-            'border-color' : 'color',
-            'border-style' : ['none','hidden','dotted','dashed','solid','double','dot-dash','dot-dot-dash','wave','groove','ridge','inset','outset'],
-            "transform" : "function"  
-        },
-        
-        stylePrefixList: {
-            "transform": ["", "-ms-", "-webkit-", "-o-", "-moz-"]  
-        },
-        
+		
         events: {
           'change input[type=text][data-style],select[data-style]' : 'changePreview',
           'change textarea.customarea' : 'changePreviewCustom',
@@ -185,10 +121,7 @@ define([
             var defaultValue = this.parent.getDefaultValue() 
             var data = this.parent.toJSON() 
             var config = _.extend(defaultValue, data, {
-                max_span : this.parent.getMaxSpan(),                
-                style : _.extend(this.styleList, this.getTransformCssFromStyle(data.style), data.style),
-                styleTitleList: this.styleTitleList,
-                styleValueList: this.styleValueList
+                max_span : this.parent.getMaxSpan()
             });
             
             config.span_list = this.parent.getSpanList(config.max_span);
@@ -279,7 +212,6 @@ define([
         
         render: function() {
             var data = this.getTplConfig();
-            
             this.$el.html(this.getTpl(data));
             
             //this.$el.find('.modal-body').html(this.getTpl(data));

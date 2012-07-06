@@ -168,6 +168,7 @@ var nodes = require('./nodes')
               throw new TypeError();
         
           for(var i in this) { 
+		    if (typeof this[i] == "function") continue;
             callback.call(context, this[i], i, this);
           }
       };
@@ -223,6 +224,7 @@ Compiler.prototype = {
     if (this.pp) this.buf.push("var __indent = [];");
     this.lastBufferedIdx = -1;
     this.visit(this.node);
+	
     return this.buf.join('\n');
   },
 
@@ -677,13 +679,16 @@ Compiler.prototype = {
     if (this.terse) buf.push('terse: true');
 
     attrs.forEach(function(attr){
-      escaped[attr.name] = attr.escaped;
-      if (attr.name == 'class') {
-        classes.push('(' + attr.val + ')');
-      } else {
-        var pair = "'" + attr.name + "':(" + attr.val + ')';
-        buf.push(pair);
-      }
+	  
+	  if (attr) { 
+		  escaped[attr.name] = attr.escaped;
+		  if (attr.name == 'class') {
+			classes.push('(' + attr.val + ')');
+		  } else {
+			var pair = "'" + attr.name + "':(" + attr.val + ')';
+			buf.push(pair);
+		  }
+	  }
     });
 
     if (classes.length) {
@@ -1009,7 +1014,7 @@ exports.compile = function(str, options){
   if (options.compileDebug !== false) {
     fn = [
         'var __jade = [{ lineno: 1, filename: ' + filename + ' }];'
-      , 'try {'
+      , 'try { '
       , parse(String(str), options)
       , '} catch (err) {'
       , '  rethrow(err, __jade[0].filename, __jade[0].lineno);'
@@ -1024,7 +1029,7 @@ exports.compile = function(str, options){
   }
 
   fn = new Function('locals, attrs, escape, rethrow', fn);
-
+  
   if (client) return fn;
 
   return function(locals){
@@ -1312,7 +1317,7 @@ Lexer.prototype = {
         name = name.slice(0, -1);
         tok = this.tok('tag', name);
         this.defer(this.tok(':'));
-        while (' ' == this.input[0]) this.input = this.input.substr(1);
+        while (' ' == this.input.charAt(0)) this.input = this.input.substr(1);
       } else {
         tok = this.tok('tag', name);
       }
@@ -1558,8 +1563,9 @@ Lexer.prototype = {
       var flags = captures[1];
       captures[1] = captures[2];
       var tok = this.tok('code', captures[1]);
-      tok.escape = flags[0] === '=';
-      tok.buffer = flags[0] === '=' || flags[1] === '=';
+      tok.escape = flags.charAt(0) === '=';
+      tok.buffer = flags.charAt(0) === '=' || flags.charAt(1) === '=';
+	  
       return tok;
     }
   },
@@ -1744,12 +1750,12 @@ Lexer.prototype = {
       ++this.lineno;
       this.consume(indents + 1);
 
-      if (' ' == this.input[0] || '\t' == this.input[0]) {
+      if (' ' == this.input.charAt(0) || '\t' == this.input.charAt(0)) {
         throw new Error('Invalid indentation, you can use tabs or spaces but not both');
       }
 
       // blank line
-      if ('\n' == this.input[0]) return this.tok('newline');
+      if ('\n' == this.input.charAt(0)) return this.tok('newline');
 
       // outdent
       if (this.indentStack.length && indents < this.indentStack[0]) {
@@ -1778,7 +1784,7 @@ Lexer.prototype = {
 
   pipelessText: function() {
     if (this.pipeless) {
-      if ('\n' == this.input[0]) return;
+      if ('\n' == this.input.charAt(0)) return;
       var i = this.input.indexOf('\n');
       if (-1 == i) i = this.input.length;
       var str = this.input.substr(0, i);
