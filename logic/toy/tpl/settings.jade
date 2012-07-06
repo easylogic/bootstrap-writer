@@ -1,0 +1,62 @@
+mixin title(value, name)
+  label!= name ? name : 'Title' 
+  input.span10.title(type='text', value= value)
+  
+mixin text(value, name, rows)
+  - rows = rows ? rows : 5;
+  label!= name ? name :'Content' 
+  textarea.span10.text(rows= rows)!= value
+  
+mixin li_select(name, list, value, title)
+  li
+    .thumbnail
+      form.form-horizontal
+        .control-group
+          label.control-label!= title
+          .controls                              
+            select.input-small(class= name)
+              option(value='') none
+              each list_value in list
+                - if (list_value == value)
+                  option(value= list_value, selected='selected')= list_value
+                - else 
+                  option(value= list_value)= list_value
+                  
+mixin li_text(name, value, title)
+  li
+    .thumbnail
+      form.form-horizontal
+        .control-group
+          label.control-label!= title
+          .controls                              
+            input(class= name, type='text', value= value).input-small  
+  
+mixin li_checkbox(name, value, title)
+  li
+    .thumbnail
+      form.form-horizontal
+        .control-group
+          label.control-label!= title
+          .controls
+            if value 
+              input(class= name, type='checkbox', checked='checked')
+            else                              
+              input(class= name, type='checkbox')
+           
+  
+.modal-header
+  button.close(data-dismiss='modal') &times; 
+  h3!= App.list[type].name 
+.modal-body
+  block body
+.modal-footer
+  a.btn.btn-danger.remove(style='float:left')
+    i.icon-trash.icon-white
+    | &nbsp;Delete
+  a.btn.btn-primary.save
+    i.icon-share.icon-white   
+    | &nbsp;Save
+  a.btn.btn-inverse(data-dismiss="modal")
+    i.icon-stop.icon-white   
+    | &nbsp;Close
+

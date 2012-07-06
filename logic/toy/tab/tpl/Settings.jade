@@ -1,0 +1,18 @@
+extends ../../tpl/settings
+
+block body
+  ul.nav.nav-tabs
+    li.active: a(href='#data', data-toggle='tab') Data
+    li: a(href='#list',data-toggle='tab') List
+  .tab-content
+    .tab-pane#list
+      include ../../tpl/settings_list
+    .tab-pane.active#data
+      ul.thumbnails
+        mixin li_select('spanarea', span_list, span, 'Span')
+        mixin li_select('offsetarea', span_list, offset, 'Offset')
+        mixin li_select('tabType', tabList, tabType, 'Tab')
+      form
+        fieldset(style='padding-left: 20px;')
+          mixin title(title)
+          mixin text(text)

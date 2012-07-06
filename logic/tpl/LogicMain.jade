@@ -1,0 +1,27 @@
+.container
+  .navbar.navbar-fixed-top
+    .navbar-inner
+      .container
+        if App.static 
+          a.brand(href='/sample/write.html') 
+             | eWriter
+          ul.nav
+            li.toolbar                
+            li.menubox
+        else
+          a.brand(href='/') 
+             | eWriter
+          .nav-collapse
+            ul.nav
+              li.toolbar                
+              li.menubox  
+//  .menubox                  
+.span12.logic-view
+  // .toolbar
+  .titlebar
+  .contents
+  .stylebox
+  footer.footer
+    em designed by <a href="cyberuls@gmail.com">easylogic</a>
+    
+.part-edit-drop.modal-backdrop.fade.in  

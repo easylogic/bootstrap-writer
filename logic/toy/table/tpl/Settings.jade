@@ -1,0 +1,29 @@
+extends ../../tpl/settings
+
+block body 
+  ul.nav.nav-tabs
+    li: a(href='#data', data-toggle='tab') Data
+    li.active: a(href='#list',data-toggle='tab') List
+  .tab-content
+    .tab-pane.active#list
+      a.btn.add_row row+
+      | &nbsp;
+      a.btn.add_column col+    
+      table
+        tr.column
+          td.ui-state-disabled
+            a.btn.span1.init_row(style='width:44px;background:white;margin:0px;').ui-state-disabled &nbsp;
+      table
+        tbody.list
+    .tab-pane#data
+      ul.thumbnails
+        mixin li_select('spanarea', span_list, span, 'Span')
+        mixin li_select('offsetarea', span_list, offset, 'Offset')
+        mixin li_checkbox('table', table, 'Table')        
+        mixin li_checkbox('striped', striped, 'Striped')        
+        mixin li_checkbox('bordered', bordered, 'Bordered')        
+        mixin li_checkbox('condensed', condensed, 'Condensed')        
+      form
+        fieldset(style='padding-left: 20px;')
+          mixin title(title)
+          mixin text(text)

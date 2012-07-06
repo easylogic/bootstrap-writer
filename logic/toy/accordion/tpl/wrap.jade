@@ -1,0 +1,6 @@
+.accordion-group
+  .accordion-heading
+    a.accordion-toggle(data-toggle='collapse', data-parent= parent, href= '#' + id)!= title
+  .accordion-body.collapse(id= id, class= isIn ? 'in' : '')
+    .accordion-inner!= body
+    

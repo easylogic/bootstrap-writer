@@ -1,0 +1,58 @@
+.tabbable
+  ul.nav.nav-pills
+    li
+      a(href='#default', data-toggle='tab') 기본  
+    li.active
+      a(href='#font', data-toggle='tab') 폰트
+    li
+      a(href='#text', data-toggle='tab') 텍스트
+    li                
+      a(href='#background', data-toggle='tab') 배경
+    li                
+      a(href='#border', data-toggle='tab') 테두리
+    li                
+      a(href='#boxmodel', data-toggle='tab') 여백
+    li                
+      a(href='#transform', data-toggle='tab') 변환
+    li                
+      a(href='#custom', data-toggle='tab') 커스텀     
+  .tab-content
+    .tab-pane#custom
+      textarea.customarea.span5(rows= 5)
+    each tab, key in styleTitleList                                
+      .tab-pane(id= key, class= (key == 'font' ? 'active' : ''))
+        ul.thumbnails
+          if styleValueList[key] == 'function'
+            each attr in tab   
+              li
+                .thumbnail
+                  form.form-horizontal
+                    .control-group
+                      label.control-label!= attr.replace(key + "-", '')
+                      .controls                  
+                        input.input-small(type='text', data-style= attr, value= style[attr])
+          else
+            each attr in tab   
+              li
+                .thumbnail
+                  form.form-horizontal
+                    .control-group
+                      label.control-label!= attr.replace(key + "-", '')
+                      .controls                  
+                        if styleValueList[attr]
+                          if styleValueList[attr] == 'color'
+                            input.input-mini(type='text', data-style= attr, class= 'color-picker', value= style[attr])                    
+                          else
+                            select.input-small(data-style= attr)  
+                              each value_list in styleValueList[attr]
+                                if value_list == style[attr]
+                                  option(value= value_list, selected='selected')!= value_list
+                                else
+                                  option(value= value_list)!= value_list
+                        else               
+                          input.input-small(type='text', data-style= attr, value= style[attr])
+.preview_top
+  ul.nav.nav-pills      
+    li.active
+      a Preview
+  .preview_body
