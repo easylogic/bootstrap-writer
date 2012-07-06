@@ -1,0 +1,10 @@
+extends ../../tpl/settings
+
+block body
+  ul.thumbnails
+    mixin li_select('spanarea', span_list, span, 'Span')
+    mixin li_select('offsetarea', span_list, offset, 'Offset')
+  form
+    fieldset(style='padding-left: 20px;')
+      mixin title(title, 'Big Title')
+      mixin text(text, 'Small Title')                                                                    

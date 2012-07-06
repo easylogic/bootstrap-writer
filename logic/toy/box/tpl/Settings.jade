@@ -1,0 +1,13 @@
+extends ../../tpl/settings
+
+block body
+  - if (!isRoot)   
+    ul.thumbnails
+      mixin li_select('spanarea', span_list, span, 'Span')
+      mixin li_select('offsetarea', span_list, offset, 'Offset')
+      mixin li_select('rowType', rowTypeList, rowType, 'Row Type')                          
+  form
+    fieldset(style='padding-left: 20px;')
+      mixin title(title)
+      if isRoot
+        mixin text(text, 'CSS')    

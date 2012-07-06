@@ -1,0 +1,13 @@
+h2!= title
+p!= text
+.carousel.slide
+  .carousel-inner
+    each obj,i in list 
+      .item(class= i == 0 ? 'active' : '')
+        img(src= obj.image)
+        .carousel-caption
+          h4!= obj.title
+          p!= obj.text    
+  if button 
+    a.carousel-control.left(data-slide='prev',style='cursor:pointer') &lsaquo;
+    a.carousel-control.right(data-slide='next',style='cursor:pointer') &rsaquo;

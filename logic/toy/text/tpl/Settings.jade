@@ -1,0 +1,11 @@
+extends ../../tpl/settings
+
+block body 
+  ul.thumbnails
+    mixin li_select('spanarea', span_list, span, 'Span')
+    mixin li_select('offsetarea', span_list, offset, 'Offset')
+    mixin li_select('tagarea', tagTypeList, tagType, 'Tag')                          
+  form
+    fieldset(style='padding-left: 10px;')
+      textarea.text(name='text', style='width:95%;height:280px;')
+        != text   

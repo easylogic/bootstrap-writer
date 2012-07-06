@@ -1,0 +1,19 @@
+span(style='display:inline;margin-left:0px;').span6
+  form
+    fieldset(style='padding-left: 20px;')
+      each obj, i in dataList
+        label!= obj.title
+        if obj.type == 'textarea'
+          textarea.data.span6(rows=5, data-name= obj.name) 
+        else
+          input.data.span6(type='text', data-name= obj.name)         
+      .data_target
+      
+      a.btn.btn-success.add_data 
+        | 추가 &nbsp;
+        i.icon-plus.icon-white 
+      | &nbsp; 
+      a.btn.btn-info.modify_data
+        | 수정 &nbsp;
+        i.icon-edit.icon-white       
+span.span4.data_list(style='overflow:auto;height:300px;padding-left:20px')

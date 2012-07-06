@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>eWriter for Bootstrap</title>
+        <meta http-equiv="X-UA-Compatible" content="IE-EmulateIE8"/>
+        <!--[if lt IE 9]>
+        <script src="/javascript/html5.js"></script>
+        <![endif]-->
+        <style>
+            body {
+                padding-top: 60px;
+            }
+
+        </style>
+
+        <script type="text/javascript" src="javascript/json2.js"></script>
+        <script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="javascript/jquery.ui.touch-punch.min.js"></script>
+        <script type="text/javascript" src="javascript/underscore-min.js"></script>
+        <script type="text/javascript" src="javascript/backbone-min.js"></script>
+        <script type="text/javascript" src="javascript/require.js"></script>
+        <script type="text/javascript" src="bootstrap/2.0/js/bootstrap.min.js"></script>
+        <link id="themes" rel="stylesheet" href="bootstrap/2.0/css/bootstrap.min.css"/>        
+        <script type="text/javascript" src="javascript/markdown.js"></script>
+        <script type="text/javascript" src="javascript/jquery-ui-1.8.20.custom.min.js"></script>
+        <script type="text/javascript" src="javascript/js-beautify/beautify-html.js"></script>
+        <script type="text/javascript" src="javascript/redactor/langs/ko.js"></script>
+        <script type="text/javascript" src="javascript/redactor/redactor.js"></script>
+        <link rel="stylesheet" href="javascript/redactor/css/redactor.css"/>
+        <link rel="stylesheet" href="google-code-prettify/src/prettify.css"/>        
+        <script type="text/javascript" src="google-code-prettify/src/prettify.js"></script>
+        <script type="text/javascript">
+            require.config({
+                paths : {
+                    jade : 'javascript/requirejs.plugin/jade-0.25'
+                }
+            });
+
+            // global object
+            var App = {
+				mode: 'write',
+				url: '/toies'
+            };
+            Backbone.sync  = function(method, model, option) {  }
+
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row logic-main">
+                <div class="span7 logic-view"></div>
+                <div class="span3 logic-control"></div>
+            </div>
+            <style>
+                .logic-comp-menu {
+                    margin-top: 2px;
+                    margin-bottom: 2px;
+                }
+
+                .btn-mini {
+                    padding: 1px;
+                }
+
+                .btn-toolbar {
+                    margin-top: 2px;
+                    margin-bottom: 0px;
+                }
+
+                .target-left, .target-middle, .target-right > .btn:last-child {
+                    -webkit-border-top-right-radius: 0px;
+                    -moz-border-radius-topright: 0px;
+                    border-top-right-radius: 0px;
+                    -webkit-border-bottom-right-radius: 0px;
+                    -moz-border-radius-bottomright: 0px;
+                    border-bottom-right-radius: 0px;
+                }
+
+                .target-left, .target-middle, .target-right > .btn:first-child {
+                    margin-left: 0;
+                    -webkit-border-top-left-radius: 0px;
+                    -moz-border-radius-topleft: 0px;
+                    border-top-left-radius: 0px;
+                    -webkit-border-bottom-left-radius: 0px;
+                    -moz-border-radius-bottomleft: 0px;
+                    border-bottom-left-radius: 0px;
+                }
+
+                .target-left {
+                    display: inline-block;
+                    position: relative;
+                    float: left;
+                    padding: 2px;
+                    cursor: move;
+                }
+
+                .target-right {
+                    display: inline-block;
+                    position: relative;
+                    float: right;
+                }
+
+                .target-middle {
+                    padding: 2px;
+                    cursor: pointer;
+                }
+
+                .logic-comp-menu {
+
+                }
+
+                .logic-drop-active-side {
+                    background: red;
+                }
+
+                .logic-drop-active-middle {
+                    background: yellow;
+                }
+
+                .modal-body .thumbnails > li {
+                    float: left;
+                    margin-bottom: 0px;
+                    margin-left: 10px;
+                }
+
+                .modal-body .thumbnail {
+                    display: block;
+                    padding: 4px;
+                    line-height: 1;
+                    border: none;
+                    -webkit-border-radius: 0px;
+                    -moz-border-radius: 0px;
+                    border-radius: 0px;
+                    -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075);
+                    -moz-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075);
+                    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075);
+                }
+
+                .modal-body .thumbnail form {
+                    margin: 0px;
+                }
+                .modal-body .thumbnail .control-group {
+                    margin: 0px;
+                }
+
+                .modal-body .thumbnail .form-horizontal .control-label {
+                    width: 80px;
+                }
+
+                .modal-body .thumbnail .form-horizontal .controls {
+                    margin-left: 90px;
+                }
+
+                .select_align {
+                    margin-top: 5px;
+                    margin-left: 0;
+                    list-style: none;
+                    cursor: pointer;
+                    overflow: hidden; /* clear floats */
+                }
+
+                .select_toy {
+                    margin-top: 5px;
+                    margin-left: 10px;
+                    list-style: none;
+                    cursor: pointer;
+                    overflow: hidden; /* clear floats */
+                }
+
+                .menubox h5 {
+                    margin-left: 10px;
+                }
+
+                .menubox .thumbnail h5 {
+                    margin-left: 0px;
+                }
+
+                .toy {
+                    display: inline;
+                    float: left;
+                }
+                .select_toy .select {
+                    color: #468847;
+                    background-color: #dff0d8;
+                }
+
+                .part-edit {
+                    position: absolute;
+                    background: white;
+                    z-index: 1036
+                }
+
+                .part-edit-drop {
+                    display: none;
+                    z-index: 1035;
+                }
+
+                .menubox .modal, .stylebox .modal {
+                    position: fixed;
+                    z-index: 100000;
+                    width: 270px;
+                    left: 300px;
+                    top: 350px;
+                    overflow: visible;
+                }
+
+                .menubox .modal-header, .stylebox .modal-header {
+                    cursor: move;
+                }
+
+                .menubox .modal-body, .stylebox .modal-body {
+                    max-height: 500px;
+                    height: 500px;
+                    padding: 0px;
+                }
+
+                .menubox .modal-footer, .stylebox .modal-footer {
+                    padding: 5px;
+                }
+
+                .menubox .nav, .stylebox .nav {
+                    margin-left: 10px;
+                }
+
+                .menubox .nav-pills > li > a, .stylebox .nav-pills > li > a {
+                    padding: 6px;
+                }
+
+                .menubox .form-horizontal .control-label, .stylebox .form-horizontal .control-label {
+                    width: 80px;
+                }
+
+                .menubox .form-horizontal .controls, .stylebox .form-horizontal .controls {
+                    margin-left: 100px;
+                }
+
+                .menubox .form-horizontal .controls:first-child, .stylebox .form-horizontal .controls:first-child {
+                    *padding-left: 100px;
+                }
+
+                .menubox .well, .stylebox .well {
+                    padding: 5px;
+                    padding-left: 30px;
+                }
+
+                .select_box {
+                    z-index: 1039;
+                    background-color: #eeeeee;
+                    -webkit-border-radius: 6px;
+                    -moz-border-radius: 6px;
+                    border-radius: 6px;
+                    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                    -webkit-background-clip: padding-box;
+                    -moz-background-clip: padding-box;
+                    background-clip: padding-box;
+                }
+
+                .dropzone_box {
+                    z-index: 1039;
+                    background-color: #E3F3AC;
+                    -webkit-border-radius: 6px;
+                    -moz-border-radius: 6px;
+                    border-radius: 6px;
+                    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                    -webkit-background-clip: padding-box;
+                    -moz-background-clip: padding-box;
+                    background-clip: padding-box;
+                }
+
+                .dropzone_box_layout {
+                    z-index: 1039;
+                    background-color: yellow;
+                    -webkit-border-radius: 6px;
+                    -moz-border-radius: 6px;
+                    border-radius: 6px;
+                    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                    -webkit-background-clip: padding-box;
+                    -moz-background-clip: padding-box;
+                    background-clip: padding-box;
+                }
+
+                .popover-inner {
+                    width: 50px;
+                }
+
+                .popover-title {
+                    display: none;
+                }
+
+                .list-row.alert {
+                    padding: 2px;
+                    margin-bottom: 4px;
+                }
+
+                .column.alert {
+                    padding: 2px;
+                    margin-bottom: 4px;
+                }
+
+            </style>
+            <script type="text/javascript">
+                require(['logic/main.js'], function(Logic) {
+                    Logic.initialize();
+                });
+            </script>
+
+        </div>
+
+    </body>
+
+</html>
