@@ -38,11 +38,7 @@ define([
             }))
             
             //this.$el.css('position', 'fixed');
-            this.$el.css({
-                'padding-top' : '10px'   
-            });
-            
-            this.$('.toy').draggable({
+            this.$('[data-name=toy]').draggable({
                 helper: 'clone',
                 revert: true,
                 containment: 'window'

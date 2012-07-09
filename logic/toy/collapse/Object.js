@@ -6,11 +6,8 @@ define([
 ],function(tpl, ToyObject, Settings, wrapTpl){
     return ToyObject.extend({
         className: 'logic-comp logic-comp-accordion',
-        mode : 'view',
-        type : 'accordion',
-        desc: '아코디언',
-        icon: 'icon-tasks',          
-        
+        type : 'collapse',
+				
         getSettings: function() { 
         	return new Settings({parent : this});	
         },

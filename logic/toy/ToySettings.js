@@ -29,7 +29,7 @@ define([
         },
         
         remove: function(e) { 
-            if (confirm("정말 삭제하시겠습니까?")) { 
+            if (!this.isRoot() && confirm("Delete this toy?")) { 
               this.$el.modal('hide');             
               this.parent.remove();
               this.parent.$el.remove();

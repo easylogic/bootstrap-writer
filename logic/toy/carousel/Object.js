@@ -5,12 +5,9 @@ define([
     'jade!./tpl/wrap'
 ],function(tpl,  ToyObject, Settings, wrapTpl){
     return ToyObject.extend({
-        className: 'logic-comp logic-comp-slide',
-        desc: '슬라이드',
-        type : 'slide',        
-        icon: 'icon-th',   
-        mode : 'view',
-        
+        className: 'logic-comp logic-comp-carousel',
+        type : 'carousel',        
+
         getSettings: function() { 
             return new Settings({parent : this});   
         },        
