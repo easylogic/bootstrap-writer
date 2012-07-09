@@ -54,7 +54,19 @@ Bootstrap Writer uses a number of opensource projects to work
  
 ## ScreenShot  
 
+### Main 
+
 ![Main Screen](http://easylogic.github.com/bootstrap-writer/images/main.jpg)
+
+### Edit
+
+![Edit Screen](http://easylogic.github.com/bootstrap-writer/images/edit.jpg)
+
+### View 
+
+![View Screen](http://easylogic.github.com/bootstrap-writer/images/view.jpg)
+ * you can copy html code to click Copy button.
+
 
 ## Demo Site 
 [Demo](http://easylogic.github.com/bootstrap-writer)
