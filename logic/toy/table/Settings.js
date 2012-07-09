@@ -115,7 +115,6 @@ define([
             
             this.$('.column td a.btn:not(.ui-state-disabled)').each(function(i, e){
                  var index = i + 1;
-                 console.log(e);
                  $(e).data('index', index);
                  $(e).attr('data-index', index);
             })            

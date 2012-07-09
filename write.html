@@ -12,38 +12,10 @@
             }
         </style>
 
-        <script type="text/javascript" src="javascript/json2.js"></script>
-        <script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
-        <script type="text/javascript" src="javascript/jquery.ui.touch-punch.min.js"></script>
-        <script type="text/javascript" src="javascript/underscore-min.js"></script>
-        <script type="text/javascript" src="javascript/backbone-min.js"></script>
-        <script type="text/javascript" src="javascript/require.js"></script>
-        <script type="text/javascript" src="bootstrap/2.0/js/bootstrap.min.js"></script>
-
         <link rel="stylesheet" href="bootstrap/2.0/css/bootstrap.min.css"/>        		
         <link rel="stylesheet" href="javascript/redactor/css/redactor.css"/>
         <link rel="stylesheet" href="google-code-prettify/src/prettify.css"/>        			
 		
-        <script type="text/javascript" src="javascript/markdown.js"></script>
-        <script type="text/javascript" src="javascript/jquery-ui-1.8.20.custom.min.js"></script>
-        <script type="text/javascript" src="javascript/js-beautify/beautify-html.js"></script>
-        <script type="text/javascript" src="javascript/redactor/redactor.min.js"></script>
-        <script type="text/javascript" src="google-code-prettify/src/prettify.js"></script>
-        <script type="text/javascript">
-            require.config({
-                paths : {
-                    jade : 'javascript/requirejs.plugin/jade-0.25'
-                }
-            });
-
-            // global object
-            var App = {
-				mode: 'write',
-				url: '/toies'
-            };
-            Backbone.sync  = function(method, model, option) {  }
-
-        </script>
     </head>
     <body>
         <div class="container">
@@ -303,11 +275,37 @@
                 }
 
             </style>
-            <script type="text/javascript">
+						
+        <script type="text/javascript" src="javascript/json2.js"></script>
+        <script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="javascript/jquery.ui.touch-punch.min.js"></script>
+        <script type="text/javascript" src="javascript/underscore-min.js"></script>
+        <script type="text/javascript" src="javascript/backbone-min.js"></script>
+        <script type="text/javascript" src="javascript/require.js"></script>
+        <script type="text/javascript" src="bootstrap/2.0/js/bootstrap.min.js"></script>		
+        <script type="text/javascript" src="javascript/markdown.js"></script>
+        <script type="text/javascript" src="javascript/jquery-ui-1.8.20.custom.min.js"></script>
+        <script type="text/javascript" src="javascript/js-beautify/beautify-html.js"></script>
+        <script type="text/javascript" src="javascript/redactor/redactor.min.js"></script>
+        <script type="text/javascript" src="google-code-prettify/src/prettify.js"></script>
+        <script type="text/javascript">
+								require.config({
+										paths : {
+												jade : 'javascript/requirejs.plugin/jade-0.25'
+										}
+								});
+
+								// global object
+								var App = {
+										mode: 'write',
+										url: '/toies'
+								};
+								Backbone.sync  = function(method, model, option) {  }
+
                 require(['logic/main.js'], function(Logic) {
                     Logic.initialize();
                 });
-            </script>
+        </script>
 
         </div>
 

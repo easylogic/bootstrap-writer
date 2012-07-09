@@ -42,10 +42,11 @@ mixin li_checkbox(name, value, title)
         .control-group
           label.control-label!= title
           .controls
-            if value 
-              input(class= name, type='checkbox', checked='checked')
-            else                              
-              input(class= name, type='checkbox')
+            label.checkbox
+              if value 
+                input(class= name, type='checkbox', checked='checked')
+              else                              
+                input(class= name, type='checkbox')
            
 .modal-header
   button.close(data-dismiss='modal') &times; 
