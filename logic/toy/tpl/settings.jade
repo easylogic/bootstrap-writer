@@ -53,9 +53,10 @@ mixin li_checkbox(name, value, title)
 .modal-body
   block body
 .modal-footer
-  a.btn.btn-danger.remove(style='float:left')
-    i.icon-trash.icon-white
-    | &nbsp;Delete
+  if !isRoot
+    a.btn.btn-danger.remove(style='float:left')
+      i.icon-trash.icon-white
+      | &nbsp;Delete
   a.btn.btn-primary.save
     i.icon-share.icon-white   
     | &nbsp;Save
