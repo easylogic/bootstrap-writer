@@ -52,20 +52,21 @@ Bootstrap Writer uses a number of opensource projects to work
 * [google-code-pretty](https://code.google.com/p/google-code-prettify/)
 * [RedactorJS](http://redactorjs.com/) 
  
-## ScreenShot  
+# ScreenShot  
 
-### Main 
+## Main 
 
 ![Main Screen](http://easylogic.github.com/bootstrap-writer/images/main.jpg)
 
-### Edit
+## Edit
 
-![Edit Screen](http://easylogic.github.com/bootstrap-writer/images/edit.jpg)
+![Edit Screen](http://easylogic.github.com/bootstrap-writer/images/edit.JPG)
 
-### View 
+## View 
 
-![View Screen](http://easylogic.github.com/bootstrap-writer/images/view.jpg)
- * you can copy html code to click Copy button.
+![View Screen](http://easylogic.github.com/bootstrap-writer/images/view.JPG)
+
+### you can copy html code to click Copy button.
 
 
 ## Demo Site 
