@@ -190,6 +190,7 @@ define([
             return data; 
         },
         
+				
         getTransformCss: function(style) { 
             var temp = [];
             _.each(style, function(value, key){
@@ -214,17 +215,12 @@ define([
         setStyle: function(data) { 
             var obj = this.getViewPoint();
 
-            
-            if (data.style && data.style['class']) { 
-                obj.addClass(data.style['class']);    
-            } 
-                                    
-            obj.css(data.style);
+            //obj.css(data.style);
             
             this.resetSpan(data.span);          
             this.resetOffset(data.offset);          
             
-            obj.css(this.getTransformCss(data.style));
+            //obj.css(this.getTransformCss(data.style));
         },
         
         createMenu: function() { 

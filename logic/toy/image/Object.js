@@ -5,10 +5,9 @@ define([
 ],function(tpl, Toy, Settings){
     return Toy.extend({
         className: 'logic-comp logic-comp-image',
-        mode : 'view',
+
         type : 'image',        
-        desc: '이미지',
-        icon: 'icon-picture',
+
         getSettings: function() { 
         	return new Settings({parent : this});	
         },
@@ -17,13 +16,13 @@ define([
             return { link : '' };   
         },            
         
-		getViewPoint: function() {  
-			return this.getPoint('viewpoint').find('.viewText'); 
-		},    
+				getViewPoint: function() {  
+					return this.getPoint('viewpoint').find('.viewText'); 
+				},    
 
-		getTpl : function(data) { 
-		    return tpl(data);
-		}
+				getTpl : function(data) { 
+						return tpl(data);
+				}
 
     })
 })

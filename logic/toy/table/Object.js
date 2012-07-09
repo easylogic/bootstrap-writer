@@ -5,10 +5,8 @@ define([
 ],function(tpl, Toy, Settings){
     return Toy.extend({
         className: 'logic-comp logic-comp-table',
-        mode : 'view',
+
         type : 'table',
-        desc: '강조',
-        icon: 'icon-th',              
 
         getSettings: function() { 
         	return new Settings({parent : this});	

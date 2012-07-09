@@ -5,10 +5,8 @@ define([
 ],function(tpl, Toy, Settings){
     return Toy.extend({
         className: 'logic-comp logic-comp-label',
-        mode : 'view',
+
         type : 'label',        
-        desc: '라벨',
-        icon: 'icon-tag',
         
         getSettings: function() { 
         	return new Settings({parent : this});	
@@ -18,11 +16,9 @@ define([
             return { kind : 'default' };   
         },        
         
-
-        
-		getTpl : function(data) { 
-		    return tpl(data);
-		}
+				getTpl : function(data) { 
+						return tpl(data);
+				}
 
     })
 })

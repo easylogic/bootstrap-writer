@@ -46,7 +46,7 @@ define([
 								'component' : { 
 									name : 'Component',
 									view : 'btn-warning',
-									list : [ 'alert', 'blockqoute', 'download', 'image', 'label', 'page-header', 'progress', 'space']
+									list : [ 'alert', 'blockqoute', 'breadcrumb', 'download', 'hero-unit', 'image', 'label', 'page-header', 'progress', 'space', 'toolbar']
 								},
 								'list' : {
 								  name : 'Plugins',
@@ -62,6 +62,9 @@ define([
     		            'jade' 			: { type : 'jade',           name: 'Jade',			icon: 'icon-refresh', view: 'btn-danger'  }, 
     		            'markdown' 	    : { type : 'markdown',           name: 'MarkDown',  icon: 'icon-list-alt', view: 'btn-danger'  },
                     'code'          : { type : 'code',           name: 'Code',          icon: 'icon-qrcode', view: 'btn-danger' },    		             
+    		            'breadcrumb' 		: { type : 'breadcrumb',          name: 'Breadcrumbs',			icon: 'icon-forward', view: 'btn-warning'   }, 
+    		            'hero-unit' 		: { type : 'hero-unit',          name: 'Hero Unit',			icon: 'icon-comment', view: 'btn-warning'   }, 
+    		            'toolbar' 		: { type : 'toolbar',          name: 'Button Groups',			icon: 'icon-download-alt', view: 'btn-warning'   }, 
     		            'alert' 		: { type : 'alert',          name: 'Alert',			icon: 'icon-info-sign', view: 'btn-warning'   }, 
     		            'label' 		: { type : 'label',          name: 'Label',			icon: 'icon-tag', view: 'btn-warning' }, 
     		            'page-header'   : { type : 'page-header',      name: 'Page Header',			icon: 'icon-folder-open', view: 'btn-warning' }, 

@@ -5,10 +5,9 @@ define([
 ],function(tpl, Toy, Settings){
     return Toy.extend({
         className: 'logic-comp logic-comp-page-header',
-        mode : 'view',
+
         type : 'page-header',        
-        desc: '제목',
-        icon: 'icon-folder-open',         
+
         getSettings: function() { 
         	return new Settings({parent : this});	
         },

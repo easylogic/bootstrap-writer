@@ -16,21 +16,21 @@ define([
             return { list : [] };   
         },              
         
-		getTpl : function(data) { 
-		    return tpl(data);
-		},
-		
-		onRender: function(data) { 
+				getTpl : function(data) { 
+						return tpl(data);
+				},
+				
+				onRender: function(data) { 
 
-          var obj = this.$('.accordion');
-          
-          obj.find('a.accordion-toggle[data-toggle=collapse]').click(function(e){
-              var index = $(this).data('index');
+							var obj = this.$('.accordion');
+							
+							obj.find('a.accordion-toggle[data-toggle=collapse]').click(function(e){
+									var index = $(this).data('index');
 
-              obj.find('.collapse.in').collapse('hide')
-              obj.find('.collapse[data-index=' + index + ']').collapse('toggle')
-          })
-		}
+									obj.find('.collapse.in').collapse('hide')
+									obj.find('.collapse[data-index=' + index + ']').collapse('toggle')
+							})
+				}
 
     })
 })

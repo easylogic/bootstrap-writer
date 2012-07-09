@@ -5,10 +5,7 @@ define([
 ],function(tpl,  ToyContainer, Settings){
     return ToyContainer.extend({
         className: 'logic-comp logic-comp-box',
-        desc: '박스',
         type : 'box',        
-        icon: 'icon-fullscreen',   
-        mode : 'view',
         
         getDefaultValue: function() { 
             return { rowType : 'default' };   

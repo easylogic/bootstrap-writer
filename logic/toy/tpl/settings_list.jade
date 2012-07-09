@@ -5,6 +5,11 @@ span(style='display:inline;margin-left:0px;').span6
         label!= obj.title
         if obj.type == 'textarea'
           textarea.data.span6(rows=5, data-name= obj.name) 
+        else if obj.type == 'select'					
+          select.data(data-name= obj.name)
+            option(value="") none
+            each kind in obj.select
+              option(value= kind)!= kind  
         else
           input.data.span6(type='text', data-name= obj.name)         
       .data_target

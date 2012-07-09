@@ -31,8 +31,8 @@ define([
         getLocalConfig : function(config) { 
             return _.extend(config, {
                 dataList: [
-                    { type : 'text',        name : 'title', title: '제목'}, 
-                    { type : 'textarea',    name : 'text',  title: '내용'} 
+                    { type : 'text',        name : 'title', title: 'Title'}, 
+                    { type : 'textarea',    name : 'text',  title: 'Content'} 
                 ]
             })
         }

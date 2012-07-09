@@ -125,7 +125,7 @@ define([
             });
             
             config.span_list = this.parent.getSpanList(config.max_span);
-            
+						
             return this.getLocalConfig(config);
         },
         
@@ -212,6 +212,7 @@ define([
         
         render: function() {
             var data = this.getTplConfig();
+						
             this.$el.html(this.getTpl(data));
             
             //this.$el.find('.modal-body').html(this.getTpl(data));

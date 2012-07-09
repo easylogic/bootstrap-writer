@@ -20,11 +20,15 @@ define([
             
             return content; 
         },
+				
+				addLine: function(obj) { 
+					return $('<div />').addClass('alert alert-success').data('obj', obj);
+				},
         
         addList: function(obj) { 
             var self = this; 
             var content = this.getListTpl(obj);
-            var div = $('<div />').addClass('alert alert-success').data('obj', obj).html(content).css({
+            var div = this.addLine(obj).html(content).css({
                'margin-bottom': '2px',
                'cursor' : 'pointer'
             }).click(function(e){

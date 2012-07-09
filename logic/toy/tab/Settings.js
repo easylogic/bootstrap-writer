@@ -8,14 +8,15 @@ define([
         getAttributeData : function(value, elem) {
             return {
                 list        : this.getList(),
-                tabType     : this.$('.tabType').val()
+                tabType     : this.$('.tabType').val(),
+                directionType     : this.$('.directionType').val()
             };
         },        
         
         getPreview: function(obj) { 
           
             var data = _.extend({}, obj);
-            
+						
             data.title = this.htmlEntities(obj.title);
             data.text = markdown.toHTML(obj.text);
           
@@ -27,9 +28,10 @@ define([
         getLocalConfig : function(config) { 
             return _.extend(config, {
                 tabList: ['tab', 'pill'],
+								direction: [ 'below', 'left', 'right'],
                 dataList: [
-                    { type : 'text',        name : 'title', title: '제목'}, 
-                    { type : 'textarea',    name : 'text',  title: '내용'} 
+                    { type : 'text',        name : 'title', title: 'Title'}, 
+                    { type : 'textarea',    name : 'text',  title: 'Content'} 
                 ]
             })
         },           
