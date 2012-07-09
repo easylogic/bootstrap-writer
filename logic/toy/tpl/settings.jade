@@ -1,3 +1,7 @@
+mixin input_text(value, name, title)
+  label!= title
+  input.span10(type='text', value= value, class= name)
+
 mixin title(value, name)
   label!= name ? name : 'Title' 
   input.span10.title(type='text', value= value)
@@ -49,9 +53,10 @@ mixin li_checkbox(name, value, title)
 .modal-body
   block body
 .modal-footer
-  a.btn.btn-danger.remove(style='float:left')
-    i.icon-trash.icon-white
-    | &nbsp;Delete
+  if !isRoot
+    a.btn.btn-danger.remove(style='float:left')
+      i.icon-trash.icon-white
+      | &nbsp;Delete
   a.btn.btn-primary.save
     i.icon-share.icon-white   
     | &nbsp;Save

@@ -13,12 +13,12 @@ define([
         },
         
         getDefaultValue: function() { 
-            return { link : '' };   
-        },            
-        
-				getViewPoint: function() {  
-					return this.getPoint('viewpoint').find('.viewText'); 
-				},    
+            return { 
+            	list : [],
+							link : '',
+							image: ''
+            };   
+        },        
 
 				getTpl : function(data) { 
 						return tpl(data);
