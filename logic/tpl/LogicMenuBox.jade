@@ -1,3 +1,12 @@
-each obj in App.list
-  a.btn.toy(data-name='toy', data-type= obj.type, title= obj.name, style='width: 18px;padding:1px;', class= obj.view)
-      i(class= obj.icon)
+each obj, key in App.menubox
+	div.btn-group
+		a.btn.dropdown-toggle(data-toggle="dropdown", class= obj.view )!= obj.name
+			| &nbsp;
+			span.caret
+		ul.dropdown-menu
+			each name in obj.list
+				- var toy = App.list[name]
+				li
+					a(href='#', data-name='toy', data-type= toy.type, style='cursor:pointer')
+						i(class= toy.icon, style='padding-right:10px')
+						!= toy.name

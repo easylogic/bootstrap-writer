@@ -1,0 +1,8 @@
+h2!= title
+p!= text
+.btn-toolbar
+  - var start = 1;
+  each group, i in toolbar
+    .btn-group
+      each button in group
+        a.btn(class= 'btn-' + button.type, href= button.link ? button.link : '#')!= button.title

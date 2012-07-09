@@ -5,8 +5,6 @@ define([], function(){
         defaults : {
             isRoot: false,
             title: '',
-            layout: { },
-            style: { },
             span : 12,           // 기본 넓이 
             offset: "",
             text: '',           // raw 데이타

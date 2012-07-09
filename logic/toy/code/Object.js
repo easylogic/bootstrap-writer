@@ -5,17 +5,20 @@ define([
 ],function(tpl, Toy, Settings){
     return Toy.extend({
         className: 'logic-comp logic-comp-code',
-        mode : 'view',
+				
         type : 'code',        
+				
         getSettings: function() { 
         	return new Settings({parent : this});	
         },
+				
         getDefaultValue: function() { 
             return { syntax : 'text' };   
         },            
-		getTpl : function(data) { 
-		    return tpl(data);
-		}
+				
+				getTpl : function(data) { 
+						return tpl(data);
+				}
 
     })
 })

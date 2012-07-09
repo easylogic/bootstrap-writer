@@ -1,0 +1,10 @@
+h2!= title
+p!= text
+ul.breadcrumb
+	each obj,i in list 
+		li(class= (i == list.length - 1) ? 'active' : '')
+			if i == list.length - 1
+				!= obj.title
+			else 
+				a(href= obj.link ? obj.link : "#")!= obj.title
+				span.divider /

@@ -5,10 +5,9 @@ define([
 ],function(tpl, Toy, Settings){
     return Toy.extend({
         className: 'logic-comp logic-comp-progress',
-        mode : 'view',
+
         type : 'progress',        
-        desc: '진행바',
-        icon: 'icon-minus',             
+ 
         getSettings: function() { 
         	return new Settings({parent : this});	
         },

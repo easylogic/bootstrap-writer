@@ -1,0 +1,7 @@
+.hero-unit
+	h1!= title
+	p!= text
+	p
+		each button in list 
+			a.btn.btn-large(class="btn-" + button.type, href= button.link ? button.link : "#")!= button.title
+			| &nbsp;

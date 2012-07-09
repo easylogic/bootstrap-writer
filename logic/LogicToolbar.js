@@ -67,8 +67,6 @@ define([
         
         saveAll: function(e) { 
             var data = App.main.contents.toData();
-            
-            console.log(data);
         },
         
         render : function() { 

@@ -1,9 +1,10 @@
 h2!= title
 p!= text
-ul.nav(class= 'nav-' + tabType + 's')
-  each obj, i in list
-    li(class= i  == 0 ? 'active' : '', data-index= i)
-      a(data-toggle= tabType, data-index= i)!= obj.title
-.tab-content      
-  each obj, i in list
-    .tab-pane(class= i  == 0 ? 'active' : '', data-index= i)!= obj.text
+.tabbable(class= 'tabs-' + directionType)
+	ul.nav(class= 'nav-' + tabType + 's')
+		each obj, i in list
+			li(class= i  == 0 ? 'active' : '', data-index= i)
+				a(data-toggle= tabType, data-index= i)!= obj.title
+	.tab-content      
+		each obj, i in list
+			.tab-pane(class= i  == 0 ? 'active' : '', data-index= i)!= obj.text

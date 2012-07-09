@@ -1,0 +1,9 @@
+h2!= title
+p!= text
+.accordion
+  each obj, i in list 
+    .accordion-group
+      .accordion-heading
+        a.accordion-toggle(data-toggle='collapse', data-index= i)!= obj.title
+      .accordion-body.collapse(data-index= i, class= i == 0 ? 'in' : '')
+        .accordion-inner!= obj.text
