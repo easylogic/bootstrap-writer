@@ -43,9 +43,6 @@ If you don't know Bootstrap but this tools support easy way to write HTML with T
 * Carousel
 * Tab
 
-
-
-
 Bootstrap Writer uses a number of opensource projects to work
 
 * [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
@@ -54,6 +51,10 @@ Bootstrap Writer uses a number of opensource projects to work
 * [js-beautify](http://jsbeautifier.org/)
 * [google-code-pretty](https://code.google.com/p/google-code-prettify/)
 * [RedactorJS](http://redactorjs.com/) 
+ 
+## ScreenShot  
+
+![Main Screen](http://easylogic.github.com/bootstrap-writer/images/main.jpg)
 
 ## Demo Site 
 [Demo](http://easylogic.github.com/bootstrap-writer)
