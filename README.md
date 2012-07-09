@@ -2,6 +2,10 @@
 
 ## Easy Writer for Twitter Bootstrap
 
+### Demo Site 
+[Demo](http://easylogic.github.com/bootstrap-writer)
+
+
 # Implements Toys.
 
 Bootstrap Writer implements based on Bootstrap css.
@@ -67,9 +71,5 @@ Bootstrap Writer uses a number of opensource projects to work
 ![View Screen](http://easylogic.github.com/bootstrap-writer/images/view.JPG)
 
 ### you can copy html code to click Copy button.
-
-
-## Demo Site 
-[Demo](http://easylogic.github.com/bootstrap-writer)
 
 
