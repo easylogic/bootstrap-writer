@@ -108,11 +108,11 @@ define([
         },        
         
         firstRender: function(obj) { 
-            this.prependElement(obj.render().el);
+            this.prependElement(this.wrap(obj.$el));
         },
 
         lastRender: function(obj) { 
-            this.appendElement(obj.render().el);
+            this.appendElement(this.wrap(obj.$el));
         },
         
         appendElement : function(elem) {
@@ -250,7 +250,8 @@ define([
                     var obj = { } ;
                     
                     obj =  new Comp(value);
-                    
+										obj.render();
+										
                     if (align == 'first') {
                         self.firstComp(obj);
                     } else if (align == 'last'){

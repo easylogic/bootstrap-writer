@@ -2,7 +2,7 @@ define([
     'jade!./tpl/Settings',
     'jade!./tpl/View',
     '../ToySettings.js'
-],function(tpl, View ToySettings){
+],function(tpl, View, ToySettings){
     return ToySettings.extend({
         
         kindList: [ 'default', 'info', 'success', 'error', 'info'],
