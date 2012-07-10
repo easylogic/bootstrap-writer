@@ -61,7 +61,8 @@ define([
     		            'html' 			: { type : 'html',           name: 'Html',			icon: 'icon-edit', view: 'btn-danger'  }, 
     		            'jade' 			: { type : 'jade',           name: 'Jade',			icon: 'icon-refresh', view: 'btn-danger'  }, 
     		            'markdown' 	    : { type : 'markdown',           name: 'MarkDown',  icon: 'icon-list-alt', view: 'btn-danger'  },
-                    'code'          : { type : 'code',           name: 'Code',          icon: 'icon-qrcode', view: 'btn-danger' },    		             
+                    'code'          : { type : 'code',           name: 'Code',          icon: 'icon-qrcode', view: 'btn-success' },
+    		            'table' 		: { type : 'table',          name: 'Table',			icon: 'icon-th', view: 'list', view: 'btn-success' },
     		            'breadcrumb' 		: { type : 'breadcrumb',          name: 'Breadcrumbs',			icon: 'icon-forward', view: 'btn-warning'   }, 
     		            'hero-unit' 		: { type : 'hero-unit',          name: 'Hero Unit',			icon: 'icon-comment', view: 'btn-warning'   }, 
     		            'toolbar' 		: { type : 'toolbar',          name: 'Button Groups',			icon: 'icon-download-alt', view: 'btn-warning'   }, 
@@ -76,8 +77,7 @@ define([
     		            'progress' 	  : { type : 'progress',       name: 'ProgressBar',			icon: 'icon-minus', view: 'component', view: 'btn-warning' },
     		            'collapse'   	: { type : 'collapse',      name: 'Collapse',		    icon: 'icon-tasks', view: 'list', view: 'btn-info'  },
     		            'carousel' 		: { type : 'carousel',          name: 'Carousel',		icon: 'icon-play-circle', view: 'list', view: 'btn-info' },
-    		            'tab' 			: { type : 'tab',            name: 'Tab',				icon: 'icon-th-list', view: 'list', view: 'btn-info' },
-    		            'table' 		: { type : 'table',          name: 'Table',			icon: 'icon-th', view: 'list', view: 'btn-success' }
+    		            'tab' 			: { type : 'tab',            name: 'Tab',				icon: 'icon-th-list', view: 'list', view: 'btn-info' }
     		        },                         
                  
                  toy : null,

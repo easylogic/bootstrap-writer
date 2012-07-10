@@ -313,6 +313,7 @@ define([
                     
                     if (comp) {
                         if (comp.cid == self.cid) {
+														self.$el.removeClass('dropzone_box');												
                             return;     
                         }                         
                         
@@ -366,10 +367,9 @@ define([
                      
                     if (comp) {
                         if (comp.cid == self.cid) {
+														self.$el.removeClass('dropzone_box_layout');   
                             return;     
                         }                         
-                        
-                        console.log('aaa');
 
                         if (self.isContainer) 
                             self.appendBeforeObject(comp);    
@@ -421,15 +421,16 @@ define([
             
             
             if (!this.isRoot()) { 
-                this.menu.$('.target-left').draggable({ 
+                this.menu.$('.target-left a.btn').draggable({ 
                     helper: 'clone', 
                     drag : function(){
                        $(this).data('comp', self);
                     }
                 });                
+							
             }            
             
-            this.menu.$('.target-left').click(_.bind(this.selectEdit, this));                      
+            this.menu.$('.target-left a.btn').click(_.bind(this.selectEdit, this));                      
            
         },
         

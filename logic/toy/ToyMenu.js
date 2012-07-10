@@ -66,7 +66,7 @@ define([
             var data = this.parent.toJSON();            
             
             this.$el.html(tpl(data));
-                        
+						
             return this; 
         }                
    })
