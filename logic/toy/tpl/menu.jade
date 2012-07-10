@@ -1,8 +1,6 @@
 table(width="100%")
   tr(style='height:5px')
-    td.target-left.target-text(align='center')
-      a.btn.btn-mini.settings-btn(class= App.list[type].view)
-        i(class= App.list[type].icon)
-        | &nbsp;
-        != App.list[type].name
-    td.target-middle(text-align="left", width="80%")   
+    td.target-left.target-text(align='center',width='16px')
+      a.btn.settings-btn.btn-mini(class= App.list[type].view, style='width: 18px;padding:1px;')
+        i(class= App.list[type].icon) 
+    td.target-middle(text-align="left", width="100%")   
