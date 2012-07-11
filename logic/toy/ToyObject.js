@@ -32,6 +32,9 @@ define([
         isRoot: function() { return false; },
         
         initialize: function(opt) {
+						// assign cid
+						App.toys[this.cid] = this; 
+						
             this.preload();
             this.base(opt);
         },
@@ -50,7 +53,7 @@ define([
             
             this.settings = this.getSettings();
             
-            if (App.main.mode != 'view') {
+            if (App.mode != 'view') {
                 this.menu = new Menu({ parent : this });
             }   
                         
@@ -69,7 +72,7 @@ define([
                         if (opt.success) opt.success.call(self);    
                     }
                 });            
-            }            
+            }      
         },      
 
         load: function(_id, callback) {
@@ -105,27 +108,30 @@ define([
         },
         
         resetSpan: function(span) {
+						span = span || this.model.get('span');
+				
             // if span exists
-            this.$el.removeClass(function(index, css){
+            this.$el.parent().removeClass(function(index, css){
                 var matches = css.match(/span\d+/g) || [];
                 return matches.join(' ');   
             });               
             
             if (span > 0) {
-                this.$el.addClass('span' + span);     
+                this.$el.parent().addClass('span' + span).attr('data-cid', this.cid);     
             }
                
         },
         
         resetOffset: function(offset) {
-            // if span exists
-            this.$el.removeClass(function(index, css){
+						offset = offset || this.model.get('offset');
+            // if offset exists
+            this.$el.parent().removeClass(function(index, css){
                 var matches = css.match(/offset\d+/g) || [];
                 return matches.join(' ');   
             });               
             
             if (offset > 0) {
-                this.$el.addClass('offset' + offset);     
+                this.$el.parent().addClass('offset' + offset).attr('data-cid', this.cid);        
             }
         },        
         
@@ -236,6 +242,7 @@ define([
           var offset = this.$el.offset();
           this.$el.after(this.$el.clone().addClass('clone'));         
           this.$el.addClass('part-edit');
+          this.$el.addClass('span' + this.model.get('span'));					
           
           // 화면 중앙으로 정렬 ?
           this.$el.css({top: offset.top + 'px' , left: (offset.left - 30) + 'px'});
@@ -252,6 +259,7 @@ define([
         
         backPartEdit: function() {
           this.$el.removeClass('part-edit');
+          this.$el.removeClass('span' + this.model.get('span'));					
           $('.clone').remove();
           this.$el.css({top:'',left:'',margin:''}); 
           $('.part-edit-drop').hide();
@@ -325,6 +333,8 @@ define([
                         
                         var type = ui.draggable.data('type');
                         
+                        if (!type) return; 
+                        
                         if (self.isContainer) {
                             self.addObject(type, 12);
                         } else { 
@@ -341,8 +351,10 @@ define([
             /*
             if (!self.isContainer) 
                 this.getViewPoint().droppable(config); */
-                     
-            this.getMenuPoint().find('.target-middle').droppable(config);        
+                  
+						if (self.isContainer) {
+							this.getMenuPoint().find('.target-middle').droppable(config);        
+						}
             
         },
         
@@ -353,6 +365,7 @@ define([
             
             if (this.isRoot()) return; 
             
+						/*
             this.getMenuPoint().find('.target-left').droppable({
                 over: function() { 
                     self.$el.addClass('dropzone_box_layout');
@@ -382,7 +395,8 @@ define([
                      
                     self.$el.removeClass('dropzone_box_layout');                                        
                 }
-            });             
+            });   
+						*/
         },
         
         setDropEvent: function() { 
@@ -419,8 +433,9 @@ define([
                 }
             );
             
-            
+
             if (!this.isRoot()) { 
+							
                 this.menu.$('.target-left a.btn').draggable({ 
                     helper: 'clone', 
                     drag : function(){
@@ -428,14 +443,39 @@ define([
                     }
                 });                
 							
-            }            
+            } 
             
-            this.menu.$('.target-left a.btn').click(_.bind(this.selectEdit, this));                      
-           
+            this.menu.$('.target-left a.btn').click(_.bind(this.selectEdit, this));        
+
+						if (App.mode == 'write') { 
+							this.getChildPoint().sortable({
+								 connectWith: ".logic-comp-childpoint",
+								 helper: 'clone',
+								 forceHelperSize: true,
+								 forcePlaceholderSize: true,
+								 start: function(event, ui) { 
+										$('.logic-comp-viewpoint').addClass('target_box');
+										$('.logic-comp-viewpoint[data-cid='  +ui.item.data('cid') +  ']').removeClass('target_box');
+								 },
+								 stop: function(event, ui) { 
+                    $('.logic-comp-viewpoint').removeClass('target_box');								 
+										// this is box 
+										var toy = App.toys[ui.item.data('cid')];
+                    var box = App.toys[toy.$el.parent().parent().data('cid')];
+										
+										if (box.cid != toy.parent.cid) {
+											toy.remove();										
+											toy.parent = box;
+										}
+											
+										box.sortChildren();
+
+								 }
+							});
+           }
         },
         
         selectEdit: function() {
-            
             if (App.mode != 'view') this.settings.open(); 
             return false;   
         },
@@ -455,7 +495,10 @@ define([
          * enabled override
          *  
          */ 
-        renderViewPoint: function(data) {  this.getPoint('viewpoint').html(this.getTpl(data)); },
+        renderViewPoint: function(data) {  
+					this.getPoint('viewpoint').html(this.getTpl(data)); 
+				},
+				
         renderChildPoint: function(data) {  },
         getDefaultValue: function() { return {}; },        
         onRender: function(data) { }, 
@@ -469,6 +512,9 @@ define([
             
             // apply tpl html
             this.$el.html(tpl(data));
+						
+						// assign cid
+						this.$el.attr('data-cid', this.cid);
             
             // render view Point 
             this.renderViewPoint(data);

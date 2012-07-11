@@ -11,19 +11,13 @@
                 padding-top: 60px;
             }
         </style>
-
+				
+        <link rel="stylesheet" href="css/smoothness/jquery-ui-1.8.20.custom.css"></script>
         <link rel="stylesheet" href="bootstrap/2.0/css/bootstrap.min.css"/>        		
         <link rel="stylesheet" href="javascript/redactor/css/redactor.css"/>
         <link rel="stylesheet" href="google-code-prettify/src/prettify.css"/>        			
-		
-    </head>
-    <body>
-        <div class="container">
-            <div class="row logic-main">
-                <div class="span7 logic-view"></div>
-                <div class="span3 logic-control"></div>
-            </div>
             <style>
+   							
                 .logic-comp-menu {
                     margin-top: 2px;
                     margin-bottom: 2px;
@@ -205,6 +199,19 @@
                     padding: 5px;
                     padding-left: 30px;
                 }
+								
+                .target_box { 
+                    background-color: GhostWhite;
+                    -webkit-border-radius: 6px;
+                    -moz-border-radius: 6px;
+                    border-radius: 6px;
+                    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+                    -webkit-background-clip: padding-box;
+                    -moz-background-clip: padding-box;
+                    background-clip: padding-box;
+                }								
 
                 .select_box {
                     z-index: 1039;
@@ -265,18 +272,28 @@
                     padding: 2px;
                     margin-bottom: 4px;
                 }
+								
+								.placeHolder div { background-color:white !important; border:dashed 1px gray !important; }
+            </style>		
+    </head>
+    <body>
+        <div class="container">
+            <div class="row logic-main">
+                <div class="span7 logic-view"></div>
+                <div class="span3 logic-control"></div>
+            </div>
 
-            </style>
 						
         <script type="text/javascript" src="javascript/json2.js"></script>
         <script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
-        <script type="text/javascript" src="javascript/jquery.ui.touch-punch.min.js"></script>
+
         <script type="text/javascript" src="javascript/underscore-min.js"></script>
         <script type="text/javascript" src="javascript/backbone-min.js"></script>
         <script type="text/javascript" src="javascript/require.js"></script>
         <script type="text/javascript" src="bootstrap/2.0/js/bootstrap.min.js"></script>		
         <script type="text/javascript" src="javascript/markdown.js"></script>
         <script type="text/javascript" src="javascript/jquery-ui-1.8.20.custom.min.js"></script>
+        <script type="text/javascript" src="javascript/jquery.ui.touch-punch.min.js"></script>				
         <script type="text/javascript" src="javascript/js-beautify/beautify-html.js"></script>
         <script type="text/javascript" src="javascript/redactor/redactor.min.js"></script>
         <script type="text/javascript" src="google-code-prettify/src/prettify.js"></script>

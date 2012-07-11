@@ -26,6 +26,7 @@ define([
                  },
                  
                  collection: {},
+								 toys : {},
                  
 							 menubox : {
 								'box' :  { 
@@ -85,7 +86,7 @@ define([
                  getId: function() {
                     return App.main.contents.rootBox.model.id;    
                  },
-                 
+
                  getToy: function(id) { 
                    if (App.collection){
                     return App.collection[id];    
