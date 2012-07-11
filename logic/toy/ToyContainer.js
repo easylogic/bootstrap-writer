@@ -82,6 +82,7 @@ define([
             if (isCreate) { 
                 var wrap = this.wrap("");
                 src.$el.parent().before(wrap.html(target.$el));
+								target.resetSpan();
             } else { 
                 src.$el.parent().before(target.$el.parent());    
             }                       
@@ -94,6 +95,7 @@ define([
             if (isCreate) { 
                 var wrap = this.wrap("");
                 src.$el.parent().after(wrap.html(target.$el));
+								target.resetSpan();
             } else { 
                 src.$el.parent().after(target.$el.parent());    
             }           
@@ -104,15 +106,18 @@ define([
             target.hide();   
             var wrap = this.wrap("");         
             this.getChildPoint().append(wrap.html(target.$el));
+						target.resetSpan();
             target.show();
         },        
         
         firstRender: function(obj) { 
             this.prependElement(this.wrap(obj.$el));
+						obj.resetSpan();
         },
 
         lastRender: function(obj) { 
             this.appendElement(this.wrap(obj.$el));
+						obj.resetSpan();
         },
         
         appendElement : function(elem) {
@@ -177,6 +182,16 @@ define([
             this.children.push(target); 
             this.save();
         },      
+				
+				sortChildren: function() { 
+					var temp = [];
+					this.getChildPoint().find("> [data-cid]").each(function(i, obj){
+						temp[i] = App.toys[$(obj).data('cid')];
+					})
+
+					this.children = temp;
+					this.save();
+				},
         
         /**
          * 첫번째 toy 로 추가  
@@ -226,19 +241,22 @@ define([
                 toy.show(false);
             })
         },
-        
+				
         renderChildPoint: function(data) { 
+					
+					var count = 0; 
        		for(var i in this.children) { 
        		  var child = this.children[i];
        		  
        		  if (typeof child == 'function') continue;
        		  
        		  var wrap_html = this.addWrap();
-       		  wrap_html.html(child.render().el);
+       		  wrap_html.html(child.$el);
+						child.render();
+						count++;
        	  } 	
         },        
-        
-        
+
         addObject: function(type, span, align) {
            
               var Comp = null;
@@ -274,12 +292,12 @@ define([
             this.model.fetch({
                 success: function() {
                     self.render();
-                    self.loadToies();
+                    self.loadToys();
                 }
             });  
         },        
         
-        loadToies: function() {
+        loadToys: function() {
             this.children = this.model.get('children');
             
             for(var i in this.children) { 
@@ -291,7 +309,7 @@ define([
             }             
         },
         
-        getToies: function() {
+        getToys: function() {
             var temp = []; 
             if (this.children) { 
                 for(var i in this.children) {
@@ -309,7 +327,7 @@ define([
         save: function() { 
             var obj = {};
             if (this.isContainer) { 
-                obj = { children: this.getToies() };
+                obj = { children: this.getToys() };
             }
             this.model.save(obj);
         },   
