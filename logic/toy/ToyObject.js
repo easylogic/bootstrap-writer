@@ -419,14 +419,14 @@ define([
             
             this.$el.hover(
                 function(e){
-                    if (!App.main.dragging) { 
+                    if (!self.isRoot()) { 
                         $('.select_box').removeClass('select_box');
                         self.$el.addClass('select_box');      
                     }
                     return false;
                 },
                 function(e){
-                    if (!App.main.dragging) { 
+                    if (!self.isRoot()) { 
                         self.$el.removeClass('select_box');
                     }
                     return false;                     
@@ -451,9 +451,17 @@ define([
 							this.getChildPoint().sortable({
 								 connectWith: ".logic-comp-childpoint",
 								 helper: 'clone',
-								 forceHelperSize: true,
-								 forcePlaceholderSize: true,
+								 placeholder: 'sortableHelper',
+
 								 start: function(event, ui) { 
+								 
+										$('.sortableHelper').addClass(ui.item.attr('class')).html(ui.item.clone().html()).css({
+											height: ui.item.height(),
+											opacity: 0.5
+										}).find("> div").css({
+											background: 'yellow'
+										})
+								 
 										$('.logic-comp-viewpoint').addClass('target_box');
 										$('.logic-comp-viewpoint[data-cid='  +ui.item.data('cid') +  ']').removeClass('target_box');
 								 },
