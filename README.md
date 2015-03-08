@@ -2,6 +2,8 @@
 
 ## Easy Writer for Twitter Bootstrap
 
+Hello
+
 ### Demo Site 
 [Demo](http://easylogic.github.com/bootstrap-writer)
 
