@@ -1,327 +1,349 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-    <head>
-        <title>Easy Writer for Bootstrap</title>
-		<meta http-equiv="Content-Type" content="text/html;utf-8" />
-        <!--[if lt IE 9]>
+
+<head>
+    <title>Easy Writer for Bootstrap</title>
+    <meta http-equiv="Content-Type" content="text/html;utf-8" />
+    <!--[if lt IE 9]>
         <script src="/javascript/html5.js"></script>
         <![endif]-->
-        <style>
-            body {
-                padding-top: 60px;
-            }
-        </style>
-				
-        <link rel="stylesheet" href="css/smoothness/jquery-ui-1.8.20.custom.css"></script>
-        <link rel="stylesheet" href="bootstrap/2.0/css/bootstrap.min.css"/>        		
-        <link rel="stylesheet" href="javascript/redactor/css/redactor.css"/>
-        <link rel="stylesheet" href="google-code-prettify/src/prettify.css"/>        			
-            <style>
-   							
-                .sortableHelper {
-                    z-index: 1;
-                }								
-								
-                .logic-comp-menu {
-                    margin-top: 2px;
-                    margin-bottom: 2px;
-                }
+    <style>
+        body {
+            padding-top: 60px;
+        }
+    </style>
 
-                .btn-toolbar {
-                    margin-top: 2px;
-                    margin-bottom: 0px;
-                }
+    <link rel="stylesheet" href="css/smoothness/jquery-ui-1.8.20.custom.css">
+    </script>
+    <link rel="stylesheet" href="bootstrap/2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="javascript/redactor/css/redactor.css" />
+    <link rel="stylesheet" href="google-code-prettify/src/prettify.css" />
+    <style>
+        .sortableHelper {
+            z-index: 1;
+        }
 
-                .target-left, .target-middle, .target-right > .btn:last-child {
-                    -webkit-border-top-right-radius: 0px;
-                    -moz-border-radius-topright: 0px;
-                    border-top-right-radius: 0px;
-                    -webkit-border-bottom-right-radius: 0px;
-                    -moz-border-radius-bottomright: 0px;
-                    border-bottom-right-radius: 0px;
-                }
+        .logic-comp-menu {
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
 
-                .target-left, .target-middle, .target-right > .btn:first-child {
-                    margin-left: 0;
-                    -webkit-border-top-left-radius: 0px;
-                    -moz-border-radius-topleft: 0px;
-                    border-top-left-radius: 0px;
-                    -webkit-border-bottom-left-radius: 0px;
-                    -moz-border-radius-bottomleft: 0px;
-                    border-bottom-left-radius: 0px;
-                }
+        .btn-toolbar {
+            margin-top: 2px;
+            margin-bottom: 0px;
+        }
 
-                .target-left a {
-                    cursor: move;
-                }
+        .target-left,
+        .target-middle,
+        .target-right>.btn:last-child {
+            -webkit-border-top-right-radius: 0px;
+            -moz-border-radius-topright: 0px;
+            border-top-right-radius: 0px;
+            -webkit-border-bottom-right-radius: 0px;
+            -moz-border-radius-bottomright: 0px;
+            border-bottom-right-radius: 0px;
+        }
 
-                .target-right {
-                    display: inline-block;
-                    position: relative;
-                    float: right;
-                }
+        .target-left,
+        .target-middle,
+        .target-right>.btn:first-child {
+            margin-left: 0;
+            -webkit-border-top-left-radius: 0px;
+            -moz-border-radius-topleft: 0px;
+            border-top-left-radius: 0px;
+            -webkit-border-bottom-left-radius: 0px;
+            -moz-border-radius-bottomleft: 0px;
+            border-bottom-left-radius: 0px;
+        }
 
-                .target-middle {
-                    padding: 2px;
-                    cursor: pointer;
-                }
+        .target-left a {
+            cursor: move;
+        }
 
-                .logic-comp-menu {
+        .target-right {
+            display: inline-block;
+            position: relative;
+            float: right;
+        }
 
-                }
+        .target-middle {
+            padding: 2px;
+            cursor: pointer;
+        }
 
-                .logic-drop-active-side {
-                    background: red;
-                }
+        .logic-comp-menu {}
 
-                .logic-drop-active-middle {
-                    background: yellow;
-                }
+        .logic-drop-active-side {
+            background: red;
+        }
 
-                .modal-body .thumbnails > li {
-                    float: left;
-                    margin-bottom: 0px;
-                    margin-left: 10px;
-                }
+        .logic-drop-active-middle {
+            background: yellow;
+        }
 
-                .modal-body .thumbnail {
-                    display: block;
-                    padding: 4px;
-                    line-height: 1;
-                    border: none;
-                    -webkit-border-radius: 0px;
-                    -moz-border-radius: 0px;
-                    border-radius: 0px;
-                    -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075);
-                    -moz-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075);
-                    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075);
-                }
+        .modal-body .thumbnails>li {
+            float: left;
+            margin-bottom: 0px;
+            margin-left: 10px;
+        }
 
-                .modal-body .thumbnail form {
-                    margin: 0px;
-                }
-                .modal-body .thumbnail .control-group {
-                    margin: 0px;
-                }
+        .modal-body .thumbnail {
+            display: block;
+            padding: 4px;
+            line-height: 1;
+            border: none;
+            -webkit-border-radius: 0px;
+            -moz-border-radius: 0px;
+            border-radius: 0px;
+            -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075);
+            -moz-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075);
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075);
+        }
 
-                .modal-body .thumbnail .form-horizontal .control-label {
-                    width: 80px;
-                }
+        .modal-body .thumbnail form {
+            margin: 0px;
+        }
 
-                .modal-body .thumbnail .form-horizontal .controls {
-                    margin-left: 90px;
-                }
+        .modal-body .thumbnail .control-group {
+            margin: 0px;
+        }
 
-                .select_align {
-                    margin-top: 5px;
-                    margin-left: 0;
-                    list-style: none;
-                    cursor: pointer;
-                    overflow: hidden; /* clear floats */
-                }
+        .modal-body .thumbnail .form-horizontal .control-label {
+            width: 80px;
+        }
 
-                .select_toy {
-                    margin-top: 5px;
-                    margin-left: 10px;
-                    list-style: none;
-                    cursor: pointer;
-                    overflow: hidden; /* clear floats */
-                }
+        .modal-body .thumbnail .form-horizontal .controls {
+            margin-left: 90px;
+        }
 
-                .menubox h5 {
-                    margin-left: 10px;
-                }
+        .select_align {
+            margin-top: 5px;
+            margin-left: 0;
+            list-style: none;
+            cursor: pointer;
+            overflow: hidden;
+            /* clear floats */
+        }
 
-                .menubox .thumbnail h5 {
-                    margin-left: 0px;
-                }
+        .select_toy {
+            margin-top: 5px;
+            margin-left: 10px;
+            list-style: none;
+            cursor: pointer;
+            overflow: hidden;
+            /* clear floats */
+        }
 
-                .toy {
-                    display: inline;
-                    float: left;
-                }
-                .select_toy .select {
-                    color: #468847;
-                    background-color: #dff0d8;
-                }
+        .menubox h5 {
+            margin-left: 10px;
+        }
 
-                .part-edit {
-                    position: absolute;
-                    background: white;
-                    z-index: 1036
-                }
+        .menubox .thumbnail h5 {
+            margin-left: 0px;
+        }
 
-                .part-edit-drop {
-                    display: none;
-                    z-index: 1035;
-                }
+        .toy {
+            display: inline;
+            float: left;
+        }
 
-                .menubox .modal, .stylebox .modal {
-                    position: fixed;
-                    z-index: 100000;
-                    width: 270px;
-                    left: 300px;
-                    top: 350px;
-                    overflow: visible;
-                }
+        .select_toy .select {
+            color: #468847;
+            background-color: #dff0d8;
+        }
 
-                .menubox .modal-header, .stylebox .modal-header {
-                    cursor: move;
-                }
+        .part-edit {
+            position: absolute;
+            background: white;
+            z-index: 1036
+        }
 
-                .menubox .modal-body, .stylebox .modal-body {
-                    max-height: 500px;
-                    height: 500px;
-                    padding: 0px;
-                }
+        .part-edit-drop {
+            display: none;
+            z-index: 1035;
+        }
 
-                .menubox .modal-footer, .stylebox .modal-footer {
-                    padding: 5px;
-                }
+        .menubox .modal,
+        .stylebox .modal {
+            position: fixed;
+            z-index: 100000;
+            width: 270px;
+            left: 300px;
+            top: 350px;
+            overflow: visible;
+        }
 
-                .menubox .nav, .stylebox .nav {
-                    margin-left: 10px;
-                }
+        .menubox .modal-header,
+        .stylebox .modal-header {
+            cursor: move;
+        }
 
-                .menubox .nav-pills > li > a, .stylebox .nav-pills > li > a {
-                    padding: 6px;
-                }
+        .menubox .modal-body,
+        .stylebox .modal-body {
+            max-height: 500px;
+            height: 500px;
+            padding: 0px;
+        }
 
-                .menubox .form-horizontal .control-label, .stylebox .form-horizontal .control-label {
-                    width: 80px;
-                }
+        .menubox .modal-footer,
+        .stylebox .modal-footer {
+            padding: 5px;
+        }
 
-                .menubox .form-horizontal .controls, .stylebox .form-horizontal .controls {
-                    margin-left: 100px;
-                }
+        .menubox .nav,
+        .stylebox .nav {
+            margin-left: 10px;
+        }
 
-                .menubox .form-horizontal .controls:first-child, .stylebox .form-horizontal .controls:first-child {
-                    *padding-left: 100px;
-                }
+        .menubox .nav-pills>li>a,
+        .stylebox .nav-pills>li>a {
+            padding: 6px;
+        }
 
-                .menubox .well, .stylebox .well {
-                    padding: 5px;
-                    padding-left: 30px;
-                }
-								
-                .target_box { 
-                    background-color: GhostWhite;
-                    -webkit-border-radius: 6px;
-                    -moz-border-radius: 6px;
-                    border-radius: 6px;
-                    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-                    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-                    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-                    -webkit-background-clip: padding-box;
-                    -moz-background-clip: padding-box;
-                    background-clip: padding-box;
-                }								
+        .menubox .form-horizontal .control-label,
+        .stylebox .form-horizontal .control-label {
+            width: 80px;
+        }
 
-                .select_box {
-                    z-index: 1039;
-                    background-color: #eeeeee;
-                    -webkit-border-radius: 6px;
-                    -moz-border-radius: 6px;
-                    border-radius: 6px;
-                    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-                    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-                    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-                    -webkit-background-clip: padding-box;
-                    -moz-background-clip: padding-box;
-                    background-clip: padding-box;
-                }
+        .menubox .form-horizontal .controls,
+        .stylebox .form-horizontal .controls {
+            margin-left: 100px;
+        }
 
-                .dropzone_box {
-                    z-index: 1039;
-                    background-color: #E3F3AC;
-                    -webkit-border-radius: 6px;
-                    -moz-border-radius: 6px;
-                    border-radius: 6px;
-                    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-                    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-                    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-                    -webkit-background-clip: padding-box;
-                    -moz-background-clip: padding-box;
-                    background-clip: padding-box;
-                }
+        .menubox .form-horizontal .controls:first-child,
+        .stylebox .form-horizontal .controls:first-child {
+            *padding-left: 100px;
+        }
 
-                .dropzone_box_layout {
-                    z-index: 1039;
-                    background-color: yellow;
-                    -webkit-border-radius: 6px;
-                    -moz-border-radius: 6px;
-                    border-radius: 6px;
-                    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-                    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-                    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-                    -webkit-background-clip: padding-box;
-                    -moz-background-clip: padding-box;
-                    background-clip: padding-box;
-                }
+        .menubox .well,
+        .stylebox .well {
+            padding: 5px;
+            padding-left: 30px;
+        }
 
-                .popover-inner {
-                    width: 50px;
-                }
+        .target_box {
+            background-color: GhostWhite;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+            -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            -webkit-background-clip: padding-box;
+            -moz-background-clip: padding-box;
+            background-clip: padding-box;
+        }
 
-                .popover-title {
-                    display: none;
-                }
+        .select_box {
+            z-index: 1039;
+            background-color: #eeeeee;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+            -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            -webkit-background-clip: padding-box;
+            -moz-background-clip: padding-box;
+            background-clip: padding-box;
+        }
 
-                .list-row.alert {
-                    padding: 2px;
-                    margin-bottom: 4px;
-                }
+        .dropzone_box {
+            z-index: 1039;
+            background-color: #E3F3AC;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+            -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            -webkit-background-clip: padding-box;
+            -moz-background-clip: padding-box;
+            background-clip: padding-box;
+        }
 
-                .column.alert {
-                    padding: 2px;
-                    margin-bottom: 4px;
-                }
-								
-								.placeHolder div { background-color:white !important; border:dashed 1px gray !important; }
-            </style>		
-    </head>
-    <body>
-        <div class="container">
-            <div class="row logic-main">
-                <div class="span7 logic-view"></div>
-                <div class="span3 logic-control"></div>
-            </div>
+        .dropzone_box_layout {
+            z-index: 1039;
+            background-color: yellow;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            border-radius: 6px;
+            -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            -webkit-background-clip: padding-box;
+            -moz-background-clip: padding-box;
+            background-clip: padding-box;
+        }
 
-						
+        .popover-inner {
+            width: 50px;
+        }
+
+        .popover-title {
+            display: none;
+        }
+
+        .list-row.alert {
+            padding: 2px;
+            margin-bottom: 4px;
+        }
+
+        .column.alert {
+            padding: 2px;
+            margin-bottom: 4px;
+        }
+
+        .placeHolder div {
+            background-color: white !important;
+            border: dashed 1px gray !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row logic-main">
+            <div class="span7 logic-view"></div>
+            <div class="span3 logic-control"></div>
+        </div>
+
+
         <script type="text/javascript" src="javascript/json2.js"></script>
         <script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
 
         <script type="text/javascript" src="javascript/underscore-min.js"></script>
         <script type="text/javascript" src="javascript/backbone-min.js"></script>
         <script type="text/javascript" src="javascript/require.js"></script>
-        <script type="text/javascript" src="bootstrap/2.0/js/bootstrap.min.js"></script>		
+        <script type="text/javascript" src="bootstrap/2.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="javascript/markdown.js"></script>
         <script type="text/javascript" src="javascript/jquery-ui-1.8.20.custom.min.js"></script>
-        <script type="text/javascript" src="javascript/jquery.ui.touch-punch.min.js"></script>				
+        <script type="text/javascript" src="javascript/jquery.ui.touch-punch.min.js"></script>
         <script type="text/javascript" src="javascript/js-beautify/beautify-html.js"></script>
         <script type="text/javascript" src="javascript/redactor/redactor.min.js"></script>
         <script type="text/javascript" src="google-code-prettify/src/prettify.js"></script>
         <script type="text/javascript">
-								require.config({
-										paths : {
-												jade : 'javascript/requirejs.plugin/jade-0.25'
-										}
-								});
+            require.config({
+                paths: {
+                    jade: 'javascript/requirejs.plugin/jade-0.25'
+                }
+            });
 
-								// global object
-								var App = {
-										mode: 'write',
-										url: '/toies'
-								};
-								Backbone.sync  = function(method, model, option) {  }
+            // global object
+            var App = {
+                mode: 'write',
+                url: '/toies'
+            };
+            Backbone.sync = function (method, model, option) { }
 
-                require(['logic/main.js'], function(Logic) {
-                    Logic.initialize();
-                });
+            require(['logic/main.js'], function (Logic) {
+                Logic.initialize();
+            });
         </script>
 
-        </div>
+    </div>
 
-    </body>
+</body>
 
 </html>
